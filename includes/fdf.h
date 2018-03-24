@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:53:36 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 17:57:58 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/24 18:55:27 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@
 typedef struct s_data	t_data;
 typedef int			t_point;
 
+/*
+* Offs is here to move the origin point
+*/
+
 struct		s_data
 {
+	void	*mlx;
+	void	*win;
 	int		width;
 	int		height;
 	int		***field;
+	int		scale;
 	int		offs[2];
 	int		move[4];
 	int		rotate[4];
@@ -31,5 +38,6 @@ struct		s_data
 
 int		get_input(int ac, char *av, t_data *data);
 int		get_sizes_and_check(char *av, t_data *data, t_list **head);
+void	hooks(t_data data);
 
 #endif

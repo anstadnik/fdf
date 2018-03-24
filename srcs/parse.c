@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 11:46:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 18:11:09 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/24 18:59:30 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	fill_field(t_list *head, t_data *data)
 		cur = head->content;
 		while (++j < data->width)
 		{
-			data->field[i][j][0] = j - data->offs[0];
-			data->field[i][j][1] = i - data->offs[1];
+			data->field[i][j][0] = (j - data->width / 2) * data->scale;
+			data->field[i][j][1] = (i - data->height / 2) * data->scale;
 			data->field[i][j][2] = ft_atoi(cur);
 			while (*cur != ' ')
 				cur++;
@@ -63,8 +63,9 @@ int		get_input(int ac, char *av, t_data *data)
 		while (++j < data->width)
 			data->field[i][j] = malloc(sizeof(int) * 4);
 	}
-	data->offs[0] = data->width / 2;
-	data->offs[1] = data->height / 2;
+	data->offs[0] = 750;
+	data->offs[1] = 750;
+	data->scale = data->width > data->height ? 1000 / data->width : 1000 / data->height;
 	fill_field(head, data);
 	ft_lstdel(&head, &free);
 	return (1);

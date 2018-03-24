@@ -8,7 +8,7 @@ IDIR = includes/
 NAME = fdf
 LIB = $(LDIR)libft.a
 DLIB = $(LDIR)dlibft.a
-FILES = main.c parse.c parse2.c
+FILES = main.c parse.c parse2.c hooks.c
 OBJS = $(FILES:.c=.o)
 
 all: $(NAME)

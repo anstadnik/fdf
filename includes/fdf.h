@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:53:36 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 18:55:27 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/26 19:31:18 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 
 typedef struct s_data	t_data;
-typedef int			t_point;
+typedef struct s_point	t_point;
 
 /*
 * Offs is here to move the origin point
@@ -34,6 +34,13 @@ struct		s_data
 	int		offs[2];
 	int		move[4];
 	int		rotate[4];
+};
+
+struct		s_point
+{
+	int	x;
+	int	y;
+	int	z;
 };
 
 int		get_input(int ac, char *av, t_data *data);

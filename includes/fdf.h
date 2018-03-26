@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:53:36 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 18:55:27 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/26 16:03:46 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 # include "../libft/includes/libft.h"
 # include <mlx.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct s_data	t_data;
-typedef int			t_point;
+typedef struct s_point	t_point;
 
 /*
-* Offs is here to move the origin point
+* Offs - here to move the origin point
 */
 
 struct		s_data
@@ -33,7 +34,13 @@ struct		s_data
 	int		scale;
 	int		offs[2];
 	int		move[4];
-	int		rotate[4];
+};
+
+struct				s_point
+{
+	double	x;
+	double	y;
+	double	z;
 };
 
 int		get_input(int ac, char *av, t_data *data);

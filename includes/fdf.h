@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:53:36 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/27 10:38:12 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 15:56:18 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ typedef struct s_point	t_point;
 // Add max height and make gradient based on it
 struct		s_data
 {
-	void	*mlx;
-	void	*win;
-	int		width;
-	int		height;
-	int		altitude;
-	int		***field;
-	int		scale;
-	int		offs[2];
+	void		*mlx;
+	void		*win;
+	intmax_t	width;
+	intmax_t	height;
+	intmax_t	altitude;
+	intmax_t	maltitude;
+	intmax_t	***field;
+	intmax_t	scale;
+	intmax_t	offs[2];
 };
 
 struct		s_point

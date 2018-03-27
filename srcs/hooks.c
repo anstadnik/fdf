@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 18:25:04 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/27 11:35:31 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 16:19:32 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int			exit_c(void)
 	exit(1);
 }
 
-static t_point	convert(int *p1, t_data *data)
+static t_point	convert(intmax_t *p1, t_data *data)
 {
 	t_point	rez;
 
 	/* ft_printf("p1[0] = %d, p1[1] = %d p1[2] = %d\noffs[0] = %d, offs[1] = %d, scale = %d\n", p1[0], p1[1], p1[2], data->offs[0], data->offs[1], data->scale); */
 	rez.z = p1[2] * data->altitude;
 	rez.x = p1[0] * data->scale - rez.z / 2 + data->offs[1];
-	rez.y = p1[1] * data->scale - rez.z + data->offs[0];
-	ft_printf("x = %d, y = %d, z = %d\n", rez.x, rez.y, rez.z);
+	rez.y = p1[1] * data->scale - 2 * rez.z / 3 + data->offs[0];
+	/* ft_printf("x = %d, y = %d, z = %d\n", rez.x, rez.y, rez.z); */
 	return (rez);
 }
 
@@ -36,6 +36,7 @@ int	draw(t_data *data)
 	int	j;
 
 	i = -1;
+	mlx_clear_window(data->mlx, data->win);
 	while (++i < data->height)
 	{
 		j = -1;
@@ -54,8 +55,7 @@ int	draw(t_data *data)
 		/* 		data->field[i][j][1] + data->offs[1], // data->field[i][j][2], */
 		/* 		0x00ffffff); */
 	}
-	mlx_clear_window(data->mlx, data->win);
-	ft_printf("hehey\n");
+	/* ft_printf("hehey\n"); */
 	return (42);
 }
 

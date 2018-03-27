@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:52:31 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 18:49:10 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 11:26:56 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		main(int ac, char **av)
 	if (!get_input(ac, av[1], &data))
 		return (1);
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 1500,
-				1500, "Potato");
+	data.win = mlx_new_window(data.mlx, 1200,
+				1200, "Potato");
 	hooks(data);
 	mlx_loop(data.mlx);
 	return (0);

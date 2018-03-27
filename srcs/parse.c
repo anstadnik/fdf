@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 11:46:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 18:59:30 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 11:23:52 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ static void	fill_field(t_list *head, t_data *data)
 		cur = head->content;
 		while (++j < data->width)
 		{
-			data->field[i][j][0] = (j - data->width / 2) * data->scale;
-			data->field[i][j][1] = (i - data->height / 2) * data->scale;
-			data->field[i][j][2] = ft_atoi(cur);
-			while (*cur != ' ')
+			while (*cur == ' ')
 				cur++;
+			data->field[i][j][0] = j;
+			data->field[i][j][1] = i;
+			data->field[i][j][2] = ft_atoi(cur);
 			cur++;
-			data->field[i][j][3] = 1;
 		}
 		head = head->next;
 	}
@@ -61,11 +60,13 @@ int		get_input(int ac, char *av, t_data *data)
 		(data->field)[i] = malloc(sizeof(int *) * data->width);
 		j = -1;
 		while (++j < data->width)
-			data->field[i][j] = malloc(sizeof(int) * 4);
+			data->field[i][j] = malloc(sizeof(int) * 3);
 	}
-	data->offs[0] = 750;
-	data->offs[1] = 750;
-	data->scale = data->width > data->height ? 1000 / data->width : 1000 / data->height;
+	//change it so it won't be scaled
+	data->scale = data->width > data->height ? 1300 / (data->width + 2) : 1300 / (data->height + 2);
+	data->offs[0] = data->scale;
+	data->offs[1] = data->scale;
+	data->altitude = data->scale / 5 ? data->scale / 10 : 1;
 	fill_field(head, data);
 	ft_lstdel(&head, &free);
 	return (1);

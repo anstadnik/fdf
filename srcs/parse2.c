@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:37:24 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/24 17:39:58 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 11:15:49 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,23 @@ static int		check_num(char **str)
 	int	c;
 
 	c = 6;
+	while (**str == ' ')
+		(*str)++;
 	if (**str == '-')
 		(*str)++;
 	while (ft_isdigit(**str))
 		(*str)++;
-	if (**str == ',')
+	if (**str == ',' && (*str)++)
 	{
 		if (*(*str)++ != '0' || *(*str)++ != 'x')
 			return (0);
 		while (c--)
-		{
-			if (ft_strsrch("0123456789ABCDEF", (*str)[c]) == -1)
+			if (ft_strsrch("0123456789ABCDEF", (*str)++[c]) == -1)
 				return (0);
-		}
 	}
-	if (**str == ' ' && (*str)++)
-		return (1);
-	else if (**str == '\0')
-		return (1);
-	else
-		return (0);
+	while (**str == ' ')
+		(*str)++;
+	return (ft_isdigit(**str) || **str == '-' || **str == '\0');
 }
 
 static int		check_line(char *str, t_data *data)

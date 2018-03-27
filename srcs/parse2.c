@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:37:24 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/27 11:15:49 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 17:33:35 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int		check_line(char *str, t_data *data)
 	return (1);
 }
 
-int		get_sizes_and_check(char *av, t_data *data, t_list **head)
+int				get_sizes_and_check(char *av, t_data *data, t_list **head)
 {
 	int		fd;
 	char	*buf;

@@ -6,13 +6,13 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 18:25:04 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/27 17:26:25 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/27 17:33:43 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int			exit_c(void)
+int				exit_c(void)
 {
 	exit(1);
 }
@@ -27,8 +27,7 @@ static t_point	convert(intmax_t *p1, t_data *data)
 	return (rez);
 }
 
-/* static int	draw(t_data *data) */
-int	draw(t_data *data)
+int				draw(t_data *data)
 {
 	int	i;
 	int	j;
@@ -41,15 +40,17 @@ int	draw(t_data *data)
 		while (++j < data->width)
 		{
 			if (i + 1 < data->height)
-				draw_line(*data, convert(data->field[i][j], data), convert(data->field[i + 1][j], data));
+				draw_line(*data, convert(data->field[i][j], data),
+						convert(data->field[i + 1][j], data));
 			if (j + 1 < data->width)
-				draw_line(*data, convert(data->field[i][j], data), convert(data->field[i][j + 1], data));
+				draw_line(*data, convert(data->field[i][j], data),
+						convert(data->field[i][j + 1], data));
 		}
 	}
 	return (42);
 }
 
-static int	triggers(int key, void *param)
+static int		triggers(int key, void *param)
 {
 	t_data	*data;
 
@@ -73,11 +74,10 @@ static int	triggers(int key, void *param)
 		data->scale += data->scale > 200 ? 0 : 1;
 	else if (key == 43)
 		data->scale += data->scale < 5 ? 0 : -1;
-
 	return (1);
 }
 
-void	hooks(t_data data)
+void			hooks(t_data data)
 {
 	mlx_loop_hook(data.mlx, &draw, &data);
 	mlx_hook(data.win, 17, 1L << 17, exit_c, NULL);

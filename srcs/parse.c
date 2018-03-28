@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 11:46:46 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/27 17:33:25 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/28 11:47:58 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	err(t_list **head)
 {
 	if (*head)
 		ft_lstdel(head, &free);
-	ft_printf("You've got an error, dude\n");
+	ft_printf("{red}You've got an error, dude\n{eoc}");
 	return (0);
 }
 
@@ -73,7 +73,7 @@ int			get_input(int ac, char *av, t_data *data)
 			data->field[i][j] = malloc(sizeof(intmax_t) * 3);
 	}
 	data->scale = data->width > data->height ?
-		1300 / (data->width + 2) : 1300 / (data->height + 2);
+		1200 / (data->width + 2) : 1200 / (data->height + 2);
 	data->offs[0] = data->scale;
 	data->offs[1] = data->scale;
 	data->altitude = data->scale / 5 ? data->scale / 10 : 1;

@@ -8,7 +8,7 @@ IDIR = includes/
 NAME = fdf
 LIB = $(LDIR)libft.a
 DLIB = $(LDIR)dlibft.a
-FILES = main.c parse.c parse2.c hooks.c draw_line.c
+FILES = main.c parse.c parse2.c hooks.c draw.c draw_line.c
 OBJS = $(FILES:.c=.o)
 
 all: $(NAME)
@@ -24,7 +24,7 @@ $(LIB):
 
 r: g
 	@echo "\x1b[32m\nRunning $(NAME)\n\x1b[0m"
-	@./fdf test_maps/10-2.fdf
+	@-for i in ./test_maps/*; do (./fdf $$i & ); done
 
 $(DLIB):
 	@echo "\x1b[35mCompiling libft with g flag\x1b[0m"

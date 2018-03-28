@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:37:24 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/27 17:33:35 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/28 11:33:20 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static int		check_line(char *str, t_data *data)
 	int	width;
 
 	width = 0;
+	if (!ft_isdigit(*str) && *str != ' ' && *str != '-')
+		return (0);
 	while (*str != '\0')
 	{
 		if (check_num(&str))
@@ -77,6 +79,7 @@ int				get_sizes_and_check(char *av, t_data *data, t_list **head)
 			return (0);
 		}
 		ft_lstpushb(head, buf, ft_strlen(buf) + 1);
+		free(buf);
 	}
 	close(fd);
 	return (data->height != 0);
